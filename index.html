@@ -301,29 +301,17 @@
       
         
           
-            <h1 id="hexo4-0图片引用"><a href="#hexo4-0图片引用" class="headerlink" title="hexo4.0图片引用"></a>hexo4.0图片引用</h1><p>步骤</p>
-<ol>
-<li><p>在根目录下配置文件_config.yml 中 post_asset_folder:false改为true</p>
-</li>
-<li><p>npm install <a href="https://github.com/7ym0n/hexo-asset-image" target="_blank" rel="noopener">https://github.com/7ym0n/hexo-asset-image</a> –save</p>
-</li>
-<li><p>执行以上两步后在新建 hexo n  xxxx博客名 就会同时在当前目录生成一个 同名文件夹，将需要的图片放入其中</p>
-</li>
-<li><p>本地测试需要重启本地服务,清空缓存</p>
-<h2 id="引用："><a href="#引用：" class="headerlink" title="引用："></a>引用：</h2><p> <img src="%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
- 
-
-</li>
-</ol>
-<p>说明：</p>
-<ol>
-<li><p>在hexo4.0上不安装 hexo-asset-image 插件 也一样内置了本地图片处理。安装了 hexo-asset-image 插件兼容以下形式</p>
-<pre><code>![alt xxx](hexo-导航图标异常/导航图标异常20191201112814.png)</code></pre></li>
-<li><p>修改了更目录配置后一定要重启本地服务再测试！（我被坑了一下午，哭！！！）</p>
-</li>
-</ol>
-
-          
+          hexo4.0本地图片引用修改步骤
+在根目录下配置文件_config.yml 中 post_asset_folder:false改为true
+npm insta
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/01/hexo-%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -440,47 +428,20 @@
 
       
         
-          
-            <h1 id="hexo-导航配置"><a href="#hexo-导航配置" class="headerlink" title="hexo 导航配置"></a>hexo 导航配置</h1><h2 id="修改对应主题下的-config-yml文件"><a href="#修改对应主题下的-config-yml文件" class="headerlink" title="修改对应主题下的_config.yml文件"></a>修改对应主题下的_config.yml文件</h2><pre><code>menu:
+          <h1 id="hexo-导航配置"><a href="#hexo-导航配置" class="headerlink" title="hexo 导航配置"></a>hexo 导航配置</h1><h2 id="修改对应主题下的-config-yml文件"><a href="#修改对应主题下的-config-yml文件" class="headerlink" title="修改对应主题下的_config.yml文件"></a>修改对应主题下的_config.yml文件</h2><pre><code>menu:
   home: / || home
   archives: /archives/ || archive
 
 # Enable/Disable menu icons.
 menu_icons:
-  enable: true</code></pre><p>上面是初始配置，发现导航不能正常，查询说是修改如下：</p>
-<pre><code>menu:
-  home: /
-  archives: /archives/
-menu_icons:
-  enable: true
-  home: home
-  archives: home</code></pre><p>导航生效了但是导航字体图标丢失了，下面的menu_icons貌似没有作用，于是查找问题，查找打包源码如下：</p>
-<pre><code>｛% for name, path in theme.menu %｝
-    {% set itemName = name.toLowerCase() %}
-    &lt;li class=&quot;menu-item menu-item-{{ itemName | replace(' ', '-') }}&quot;&gt;
-      &lt;a href=&quot;{{ url_for(path.split('||')[0]) | trim }}&quot; rel=&quot;section&quot;&gt;
-        {% if theme.menu_icons.enable %}
-              <i class="menu-item-icon fa fa-fw fa-{{ path.split('||')[1] | trim | default('question-circle') }}"></i> <br />
-            {% endif %}
-        {{ __('menu.' + name) | replace('menu.', '') }}
-      &lt;/a&gt;
-    &lt;/li&gt;
-  {% endfor %}</code></pre><p>  源码并没有取menu_icons的配置，直接取的menu的配置以||分隔，所以初始配置应该是正确的</p>
-<pre><code>menu:
-  home: / || home
-  archives: /archives/ || archive
-
-# Enable/Disable menu icons.
-menu_icons:
-  enable: true</code></pre><p>  这样恢复配置后导航失效，看了下链接，多了空格，于是去掉默认配置多余的空格：</p>
-<p>  menu:<br>      home: /||home<br>      archives: /archives/||archive</p>
-<pre><code># Enable/Disable menu icons.
-menu_icons:
-  enable: true</code></pre><p>  好这下正常了</p>
-<p>  <img src="hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
-<p>  <img src="%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
-  <img src="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" class="" title="This is an example image">
-          
+  enable: true</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
