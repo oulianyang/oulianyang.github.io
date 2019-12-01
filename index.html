@@ -181,7 +181,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -191,7 +191,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -230,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://oulianyang.cn/2019/11/30/my-test/">
+    <link itemprop="mainEntityOfPage" href="http://oulianyang.cn/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lian Yang">
@@ -249,7 +249,164 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/30/my-test/" itemprop="url">markdown 语法测试</a></h1>
+                <a class="post-title-link" href="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/" itemprop="url">hexo_导航图标异常</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-01T11:30:19+08:00">
+                2019-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="hexo-导航配置"><a href="#hexo-导航配置" class="headerlink" title="hexo 导航配置"></a>hexo 导航配置</h1><h2 id="修改对应主题下的-config-yml文件"><a href="#修改对应主题下的-config-yml文件" class="headerlink" title="修改对应主题下的_config.yml文件"></a>修改对应主题下的_config.yml文件</h2><pre><code>menu:
+  home: / || home
+  archives: /archives/ || archive
+
+# Enable/Disable menu icons.
+menu_icons:
+  enable: true</code></pre><p>上面是初始配置，发现导航不能正常，查询说是修改如下：</p>
+<pre><code>menu:
+  home: /
+  archives: /archives/
+menu_icons:
+  enable: true
+  home: home
+  archives: home</code></pre><p>导航生效了但是导航字体图标丢失了，下面的menu_icons貌似没有作用，于是查找问题，查找打包源码如下：</p>
+<pre><code>｛% for name, path in theme.menu %｝
+    {% set itemName = name.toLowerCase() %}
+    &lt;li class=&quot;menu-item menu-item-{{ itemName | replace(' ', '-') }}&quot;&gt;
+      &lt;a href=&quot;{{ url_for(path.split('||')[0]) | trim }}&quot; rel=&quot;section&quot;&gt;
+        {% if theme.menu_icons.enable %}
+              <i class="menu-item-icon fa fa-fw fa-{{ path.split('||')[1] | trim | default('question-circle') }}"></i> <br>
+            {% endif %}
+        {{ __('menu.' + name) | replace('menu.', '') }}
+      &lt;/a&gt;
+    &lt;/li&gt;
+  {% endfor %}</code></pre><p>  源码并没有取menu_icons的配置，直接取的menu的配置以||分隔，所以初始配置应该是正确的</p>
+<pre><code>menu:
+  home: / || home
+  archives: /archives/ || archive
+
+# Enable/Disable menu icons.
+menu_icons:
+  enable: true</code></pre><p>  这样恢复配置后导航失效，看了下链接，多了空格，于是去掉默认配置多余的空格：</p>
+<p>  menu:<br>      home: /||home<br>      archives: /archives/||archive</p>
+<pre><code># Enable/Disable menu icons.
+menu_icons:
+  enable: true</code></pre><p>  好这下正常了</p>
+<p>  <img src="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
+<p>  <img src="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
+  <img src="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" class title="This is an example image">
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://oulianyang.cn/2019/11/30/markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lian Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lianyang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/30/markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/" itemprop="url">markdown 语法测试</a></h1>
         
 
         <div class="post-meta">
@@ -300,10 +457,10 @@
 
       
         
-          <h1 id="这这是一个测试markdown语法"><a href="#这这是一个测试markdown语法" class="headerlink" title="这这是一个测试markdown语法"></a>这这是一个测试markdown语法</h1><p><a href="https://www.appinn.com/markdown/index.html" target="_blank" rel="noopener">学习地址:</a><a href="https://www.appinn.com/markdown/index.html" target="_blank" rel="noopener">https://www.appinn.com/markdown/index.html</a></p>
+          <h1 id="这是一个测试markdown语法"><a href="#这是一个测试markdown语法" class="headerlink" title="这是一个测试markdown语法"></a>这是一个测试markdown语法</h1><p><a href="https://www.appinn.com/markdown/index.html" target="_blank" rel="noopener">学习地址:</a><a href="https://www.appinn.com/markdown/index.html" target="_blank" rel="noopener">https://www.appinn.com/markdown/index.html</a></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/11/30/my-test/#more" rel="contents">
+            <a class="btn" href="/2019/11/30/markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -509,9 +666,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
