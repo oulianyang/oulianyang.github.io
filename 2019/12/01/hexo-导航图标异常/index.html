@@ -86,12 +86,12 @@
 <meta property="og:site_name" content="Lianyang">
 <meta property="og:description" content="hexo 导航配置修改对应主题下的_config.yml文件menu:   home: &#x2F; || home   archives: &#x2F;archives&#x2F; || archive  # Enable&#x2F;Disable menu icons. menu_icons:   enable: true上面是初始配置，发现导航不能正常，查询说是修改如下： menu:   home: &#x2F;   archives: &#x2F;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;oulianyang.cn&#x2F;2019&#x2F;12&#x2F;01&#x2F;hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8&#x2F;%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;oulianyang.cn&#x2F;2019&#x2F;12&#x2F;01&#x2F;hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8&#x2F;hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8&#x2F;%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;oulianyang.cn&#x2F;2019&#x2F;12&#x2F;01&#x2F;hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8&#x2F;%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;oulianyang.cn&#x2F;2019&#x2F;12&#x2F;01&#x2F;hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8&#x2F;%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png">
 <meta property="og:updated_time" content="2019-12-01T07:49:23.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;oulianyang.cn&#x2F;2019&#x2F;12&#x2F;01&#x2F;hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8&#x2F;%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;oulianyang.cn&#x2F;2019&#x2F;12&#x2F;01&#x2F;hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8&#x2F;hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8&#x2F;%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png">
 
 
 
@@ -320,7 +320,7 @@ menu_icons:
     &lt;li class=&quot;menu-item menu-item-{{ itemName | replace(' ', '-') }}&quot;&gt;
       &lt;a href=&quot;{{ url_for(path.split('||')[0]) | trim }}&quot; rel=&quot;section&quot;&gt;
         {% if theme.menu_icons.enable %}
-              <i class="menu-item-icon fa fa-fw fa-{{ path.split('||')[1] | trim | default('question-circle') }}"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-{{ path.split('||')[1] | trim | default('question-circle') }}"></i> <br />
             {% endif %}
         {{ __('menu.' + name) | replace('menu.', '') }}
       &lt;/a&gt;
@@ -337,9 +337,9 @@ menu_icons:
 <pre><code># Enable/Disable menu icons.
 menu_icons:
   enable: true</code></pre><p>  好这下正常了</p>
-<p>  <img src="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
-<p>  <img src="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
-  <img src="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" class title="This is an example image">
+<p>  <img src="hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
+<p>  <img src="%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
+  <img src="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" class="" title="This is an example image">
       
     </div>
     
@@ -372,6 +372,10 @@ menu_icons:
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/01/hexo-%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98/" rel="prev" title="hexo_本地图片引用问题">
+                hexo_本地图片引用问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -448,7 +452,7 @@ menu_icons:
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

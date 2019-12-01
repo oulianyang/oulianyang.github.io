@@ -230,6 +230,146 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://oulianyang.cn/2019/12/01/hexo-%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lian Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lianyang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/01/hexo-%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98/" itemprop="url">hexo_本地图片引用问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-01T17:00:34+08:00">
+                2019-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="hexo4-0图片引用"><a href="#hexo4-0图片引用" class="headerlink" title="hexo4.0图片引用"></a>hexo4.0图片引用</h1><p>步骤</p>
+<ol>
+<li><p>在根目录下配置文件_config.yml 中 post_asset_folder:false改为true</p>
+</li>
+<li><p>npm install <a href="https://github.com/7ym0n/hexo-asset-image" target="_blank" rel="noopener">https://github.com/7ym0n/hexo-asset-image</a> –save</p>
+</li>
+<li><p>执行以上两步后在新建 hexo n  xxxx博客名 就会同时在当前目录生成一个 同名文件夹，将需要的图片放入其中</p>
+</li>
+<li><p>本地测试需要重启本地服务,清空缓存</p>
+<h2 id="引用："><a href="#引用：" class="headerlink" title="引用："></a>引用：</h2><p> <img src="%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
+ 
+
+</li>
+</ol>
+<p>说明：</p>
+<ol>
+<li><p>在hexo4.0上不安装 hexo-asset-image 插件 也一样内置了本地图片处理。安装了 hexo-asset-image 插件兼容以下形式</p>
+<pre><code>![alt xxx](hexo-导航图标异常/导航图标异常20191201112814.png)</code></pre></li>
+<li><p>修改了更目录配置后一定要重启本地服务再测试！（我被坑了一下午，哭！！！）</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://oulianyang.cn/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -320,7 +460,7 @@ menu_icons:
     &lt;li class=&quot;menu-item menu-item-{{ itemName | replace(' ', '-') }}&quot;&gt;
       &lt;a href=&quot;{{ url_for(path.split('||')[0]) | trim }}&quot; rel=&quot;section&quot;&gt;
         {% if theme.menu_icons.enable %}
-              <i class="menu-item-icon fa fa-fw fa-{{ path.split('||')[1] | trim | default('question-circle') }}"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-{{ path.split('||')[1] | trim | default('question-circle') }}"></i> <br />
             {% endif %}
         {{ __('menu.' + name) | replace('menu.', '') }}
       &lt;/a&gt;
@@ -337,9 +477,9 @@ menu_icons:
 <pre><code># Enable/Disable menu icons.
 menu_icons:
   enable: true</code></pre><p>  好这下正常了</p>
-<p>  <img src="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
-<p>  <img src="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
-  <img src="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" class title="This is an example image">
+<p>  <img src="hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
+<p>  <img src="%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" alt="alt xxx"></p>
+  <img src="/2019/12/01/hexo-%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B8/%E5%AF%BC%E8%88%AA%E5%9B%BE%E6%A0%87%E5%BC%82%E5%B8%B820191201112814.png" class="" title="This is an example image">
           
         
       
@@ -668,7 +808,7 @@ menu_icons:
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
